@@ -1,6 +1,6 @@
 name: mcp-crypto-api
 version: 1.0.0
-description: MCP Crypto API için Smithery tool
+
 startCommand:
   type: stdio
   configSchema:
@@ -9,20 +9,13 @@ startCommand:
   commandFunction: |
     (config) => ({
       command: 'uvicorn',
-      args: ['app:app', '--host', '0.0.0.0', '--port', '8000', '--reload']
+      args: ['app:app', '--host', '0.0.0.0', '--port', '8000']
     })
   exampleConfig: {}
-api:
-  type: http
-  port: 8000
-  baseUrl: "http://localhost:8000"
-  endpoints:
-    getRoot:
-      method: GET
-      path: "/"
-    getPrice:
-      method: GET
-      path: "/price"
-      queryParams:
-        coin: string
-        currency: string
+
+toolList:
+  - name: getRoot
+    lazy: true
+
+  - name: getPrice
+    lazy: true
