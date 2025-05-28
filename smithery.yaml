@@ -1,9 +1,8 @@
-name: mcp-crypto
-type: web-service
-build:
-  dockerfile: Dockerfile
-run:
-  command: uvicorn app:app --host 0.0.0.0 --port 8000
-  port: 8000
-  healthcheck:
-    path: /
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties: {}
+  commandFunction: |
+    (config) => ({ command: 'python', args: ['-m', 'uvicorn', 'app:app', '--host', '0.0.0.0', '--port', '8000'] })
+  exampleConfig: {}
